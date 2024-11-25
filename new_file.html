@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>视频播放结束显示按钮</title>
+<style>
+	/* styles.css */
+	.video-container {
+	    position: relative;
+	    width: 100%;
+	    max-width: 800px;
+	    margin: 0 auto;
+	}
+	
+	video {
+	    width: 100%;
+	    height: auto;
+	}
+	
+	#jumpButton {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    padding: 10px 20px;
+	    background-color: #3498db;
+	    color: white;
+	    border: none;
+	    border-radius: 5px;
+	    cursor: pointer;
+	    transition: background-color 0.3s;
+	}
+	
+	#jumpButton.hidden {
+	    display: none;
+	}
+	
+	#jumpButton:hover {
+	    background-color: #2980b9;
+	}
+</style>
+</head>
+<body>
+<div class="video-container">
+    <video id="myVideo" controls>
+        <source src="video/address.mp4" type="video/mp4">
+        您的浏览器不支持 video 标签。
+    </video>
+    <button id="jumpButton" class="hidden">点击跳转</button>
+</div>
+
+<script>
+	// script.js
+	document.addEventListener('DOMContentLoaded', function() {
+	    const video = document.getElementById('myVideo');
+	    const button = document.getElementById('jumpButton');
+	
+	    video.addEventListener('ended', function() {
+	        button.classList.remove('hidden'); // 视频结束后显示按钮
+	    });
+	
+	    button.addEventListener('click', function() {
+	        window.location.href = 'https://example.com'; // 跳转到指定页面
+	    });
+	});
+</script>
+</body>
+</html>
