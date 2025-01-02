@@ -124,31 +124,30 @@
 	<div class="tooltip" id="tooltip"></div>
     <!-- 在这里添加 JavaScript 脚本 -->
     <script>
-        // 写你的 JavaScript 代码
-		document.addEventListener('DOMContentLoaded', function() {
-		    const dots = document.querySelectorAll('.marker');
-		    const tooltip = document.getElementById('tooltip');
-		
-		    dots.forEach(dot => {
-		        let timeoutId;
-		
-		        dot.addEventListener('mouseenter', function() {
-		            const tooltipText = dot.getAttribute('data-tooltip');
-		            tooltip.textContent = tooltipText;
-		            tooltip.style.left = `${dot.offsetLeft + 30}px`;
-		            tooltip.style.top = `${dot.offsetTop + 30}px`;
-		
-		            timeoutId = setTimeout(() => {
-		                tooltip.style.display = 'block'; 
-		            }, 500);
-		        });
-		
-		        dot.addEventListener('mouseleave', function() {
-		            clearTimeout(timeoutId);
-		            tooltip.style.display = 'none'; 
-		        });
-		    });
-		});
-    </script>
+        $(document).ready(function() {
+            var $dots = $('.marker');
+            var $tooltip = $('#tooltip');
+    
+            $dots.each(function() {
+                var timeoutId;
+    
+                $(this).on('mouseenter', function() {
+                    var tooltipText = $(this).data('tooltip'); 
+                    $tooltip.css({
+                        left: $(this).offset().left + 30 + 'px',
+                        top: $(this).offset().top + 30 + 'px'
+                    });
+    
+                    timeoutId = setTimeout(function() {
+                        $tooltip.show(); 
+                    }, 500);
+                });
+    
+                $(this).on('mouseleave', function() {
+                    clearTimeout(timeoutId);
+                    $tooltip.hide();
+                });
+            });
+        });
 </body>
 </html>
