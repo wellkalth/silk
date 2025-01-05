@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<style>
+	        body, html {
+	            margin: 0;
+	            padding: 0;
+	            height: 100%;
+	            width: 100%;
+	            overflow-x: hidden; /* 防止水平滚动条出现 */
+	        }
+			body{
+				height: 100%;
+				background-image: url('../img/shangdu1.jpg'); /* 背景图片路径 */
+				background-size: cover; /* 让背景图片覆盖整个页面 */
+				background-position: contain; /* 将背景图片居中 */
+				background-repeat: no-repeat; /* 不重复背景图片 */
+				background-attachment: fixed; /* 固定背景图片，使其不受滚动影响 */
+			}
+			img{
+				height: 300px;
+				object-fit: contain;
+				margin: 30px 30px 30px 30px;
+				animation: img 1s ease 1;
+				animation-fill-mode: backwards; /*隐藏图片*/
+				animation-delay: 1s;  /*延迟1秒*/
+			}
+			@keyframes img {
+				0%{opacity: 0;transform: translateY(-50%);}
+				
+				100%{opacity: 1;transform: translateY(0);}
+			}
+			p{
+				max-width: 100%;
+				max-height: 100%;
+				word-break: break-all;
+				font-size: 15px;
+				animation: p 1s ease 1;
+				animation-fill-mode: backwards; /*隐藏图片*/
+				animation-delay: 1s;  /*延迟1秒*/
+			}
+			@keyframes p {
+				0%{opacity: 0;}
+				
+				100%{opacity: 1;}
+			}
+			video{
+				width: 800px;
+				object-fit: contain;
+				margin: 10% auto;
+
+			}
+			.text{
+				flex-direction: column;
+				text-align: center;
+				width: 90%;
+				background-color: rgba(255, 255, 255, 0.7); /* 透明浅白色背景 */
+				border-radius: 5px; /* 圆角 */
+				margin: 5% auto; /* 水平居中 */
+				box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+				animation: text 1s ease 1;
+			}
+			@keyframes text{
+				0%{opacity: 0;transform: scale(0.7);}
+			
+				100%{opacity: 1;transform: scale(1);}
+			}
+			.moddle{
+				display: flex;
+				width: 80%;
+				margin: 0 auto; /* 水平居中 */
+			}
+			a{
+				font-size: 25px;
+				color:#000000;
+				text-decoration:none;
+				margin-left:50px;
+			}
+			a:hover{
+				color:#FF0000;
+				text-decoration:underline;
+			}
+			.video-container {
+			    position: relative;
+			    width: 100%;
+			    max-width: 800px;
+			    margin: 0 auto;
+			}
+			#jumpButton {
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    padding: 10px 20px;
+			    background-color: #3498db;
+			    color: white;
+			    border: none;
+			    border-radius: 5px;
+			    cursor: pointer;
+			    transition: background-color 0.3s;
+			}
+			
+			#jumpButton.hidden {
+			    display: none;
+			}
+			
+			#jumpButton:hover {
+			    background-color: #2980b9;
+			}
+			.modal {
+			    display: none; /* 默认隐藏 */
+			    position: fixed; /* 固定定位 */
+			    z-index: 1; /* 设置为最高层级 */
+			    padding-top: 100px; /* 图片与顶部的距离 */
+			    left: 0;
+			    top: 0;
+			    width: 100%; /* 宽度为100% */
+			    height: 100%; /* 高度为100% */
+			    overflow: auto; /* 当内容超出窗口大小时启用滚动条 */
+			    background-color: rgb(0,0,0); /* 黑色背景 */
+			    background-color: rgba(0,0,0,1); /* 黑色半透明背景 */
+			}
+			
+			/* 模态框内容 */
+			.modal-content {
+				position: relative;
+			    margin: auto;
+			    display: block;
+			    width: 80%;
+			    max-width: 700px;
+				animation: enlarge 1s ease-in-out;
+				animation-fill-mode: forwards;
+				top:15%;
+			}
+			@keyframes enlarge {
+				from {transform: scale(1);}
+				to {transform: scale(2);}
+			}
+			/* 关闭按钮样式 */
+			.close {
+			    position: absolute;
+			    top: 15px;
+			    right: 35px;
+			    color: #f1f1f1;
+			    font-size: 40px;
+			    font-weight: bold;
+			    transition: 0.3s;
+			}
+			
+			.close:hover,
+			.close:focus {
+			    color: #bbb;
+			    text-decoration: none;
+			    cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="text">
+			<h1 style="text-align: center">上都</h1>
+			<div class="moddle">
+				<img src="../img/shangdu2.jpg" onclick="openModal(this)"/>
+				<p>
+					&ensp;&ensp;&ensp;&ensp;上都是中国历史上最辉煌的古都之一，也是丝绸之路的重要起点。周、秦、汉、隋、唐等十余个朝代曾建都于此。在发展的顶峰时期，上都拥有超过百万的人口，吸引了大批的外国使节、僧侣与商人。</p>
+			</div>
+			<div class="moddle">
+				<p>
+					&ensp;&ensp;&ensp;&ensp;上都作为丝绸之路的起点，见证了东西方文明的交流与融合，留下了丰富的文化遗产。长安作为丝绸之路的起点，不仅是商品交易的中心，更是文化交流的重要平台。</p>
+				<img src="../img/shangdu3.jpg" onclick="openModal(this)"/>
+			</div>
+			<div class="moddle">
+				<img src="../img/shangdu4.jpg" onclick="openModal(this)"/>
+				<p>
+					&ensp;&ensp;&ensp;&ensp;来自中亚、西亚乃至欧洲的商人、使节、学者等纷纷来到长安，带来了各自的文化和艺术，促进了东西方文化的交流与融合。长安的繁荣也带动了周边地区的发展，如河西走廊、新疆等地逐渐成为丝绸之路上的重要节点和商贸中心。</p>
+
+			</div>
+			<div class="video-container">
+			    <video id="myVideo" controls>
+			        <source src="../video/shangdu.mp4" type="video/mp4">
+			        您的浏览器不支持 video 标签。
+			    </video>
+			    <button id="jumpButton" class="hidden">开始答题</button>
+			</div>
+		</div>
+		
+		<div id="myModal" class="modal">
+		    <span class="close" onclick="closeModal()">&times;</span>
+		    <img class="modal-content" id="img01">
+		    <div id="caption"></div>
+		</div>
+	<script>
+		// script.js
+		$(document).ready(function() {
+		    var $video = $('#myVideo');
+		    var $button = $('#jumpButton');
+		
+		    $video.on('ended', function() {
+		        $button.removeClass('hidden'); 
+		    });
+		
+
+		});
+	
+		function openModal(img) {
+		    var $modal = $("#myModal");
+		    var $modalImg = $("#img01");
+		    $modal.css("display", "block"); 
+		    $modalImg.attr("src", img.src);
+			$modalImg.one("load", function() {
+			    $(this).css("opacity", "1"); 
+			}).each(function() {
+				if(this.complete) $(this).trigger("load");
+			});
+		}
+		
+		function closeModal() {
+		    $("#myModal").css("display", "none"); 
+		}
+	</script>
+	</body>
+</html>
