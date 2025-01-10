@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>答题</title>
+		<style>
+			#main {							
+				width: 100%;
+				height: 1400px;
+				min-width: 500px;
+				z-index: -10;
+				zoom: 1;				
+				background-image: url("res/131313.png");
+				background-repeat: repeat-y;
+                background-size:cover;
+				background-position: 0 0;
+				color: white;
+			}
+			.question {
+			            font-size: 1.3em; 
+			            margin-bottom: 10px;
+			        }
+			.image1{
+			        text-align:center;
+			        width: 190px; 
+					height: 190px;
+			        }
+		    #scoreImage img {
+		        transition: transform 0.3s ease; 
+		    }
+		     
+		    #scoreImage img:hover {
+		        transform: scale(1.2); 
+		    }
+		</style>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+
+	</head>
+
+	<body>
+		
+		<form action="http://127.0.0.1:8848/ex2/index.html" method="get" ></form>
+		<div id="main">
+			<h1>答题</h1>
+    		<div class="menu">
+    			<a href="index.html">返回首页</a>
+    		</div>
+			<h2 class="question">1.在丝绸之路上，威尼斯与东方的贸易主要通过哪种方式进行？：</h2><br />
+			<input type="radio" name="answer1" value="A"/>A. 陆路运输
+			<input type="radio" name="answer1" value="B"/>B. 海路运输
+			<input type="radio" name="answer1" value="C"/>C. 空运
+			<input type="radio" name="answer1" value="D"/>D. 管道运输<br /><br />
+			<h2 class="question">2.威尼斯与东方的贸易中，哪种商品最为著名且受到欧洲贵族的喜爱？：</h2><br />
+			<input type="radio" name="answer2" value="A"/>A. 丝绸
+			<input type="radio" name="answer2" value="B"/>B. 香料
+			<input type="radio" name="answer2" value="C"/>C. 茶叶
+			<input type="radio" name="answer2" value="D"/>D. 瓷器<br /><br />
+			<h2 class="question">3.威尼斯的哪个建筑因其与丝绸之路贸易的紧密关系而著名？：</h2><br />
+			<input type="radio" name="answer3" value="A"/>A. 圣马可大教堂
+			<input type="radio" name="answer3" value="B"/>B. 里亚尔托桥
+			<input type="radio" name="answer3" value="C"/>C. 黄金宫
+			<input type="radio" name="answer3" value="D"/>D. 威尼斯总督府<br /><br />
+			<h2 class="question">4.威尼斯在丝绸之路贸易中，与哪些地区建立了广泛的联系？：</h2><br />
+			<input type="radio" name="answer4" value="A"/>A. 美洲
+			<input type="radio" name="answer4" value="B"/>B. 非洲
+			<input type="radio" name="answer4" value="C"/>C. 东亚
+			<input type="radio" name="answer4" value="D"/>D. 大洋洲<br /><br />
+			<h2 class="question">5.威尼斯的哪个家族在丝绸之路贸易中扮演了重要角色，并建立了庞大的商业帝国？：</h2><br />
+			<input type="radio" name="answer5" value="A"/>A. 波吉亚家族
+			<input type="radio" name="answer5" value="B"/>B. 美第奇家族
+			<input type="radio" name="answer5" value="C"/>C. 柯西莫家族
+			<input type="radio" name="answer5" value="D"/>D. 福斯卡里家族<br /><br />
+			<h2 class="question">6.威尼斯在丝绸之路贸易中的繁荣时期大约是哪个世纪？：</h2><br />
+			<input type="radio" name="answer6" value="A"/>A. 5世纪
+			<input type="radio" name="answer6" value="B"/>B. 10世纪
+			<input type="radio" name="answer6" value="C"/>C. 14-16世纪
+			<input type="radio" name="answer6" value="D"/>D. 18世纪<br /><br />
+			<h2 class="question">7.威尼斯的哪个节日与丝绸之路贸易有直接关联，庆祝的是威尼斯与东方的贸易联系？：</h2><br />
+			<input type="radio" name="answer7" value="A"/>A. 狂欢节
+			<input type="radio" name="answer7" value="B"/>B. 电影节
+			<input type="radio" name="answer7" value="C"/>C. 威尼斯双年展
+			<input type="radio" name="answer7" value="D"/>D. 圣马可节<br /><br />
+			<h2 class="question">8.威尼斯在丝绸之路贸易衰落后面临了哪些主要挑战？：</h2><br />
+			<input type="radio" name="answer8" value="A"/>A. 海上新航线的开辟
+			<input type="radio" name="answer8" value="B"/>B. 陆地交通的改善
+			<input type="radio" name="answer8" value="C"/>C. 国内政治动荡
+			<input type="radio" name="answer8" value="D"/>D. 自然灾害频发<br /><br />
+			<div style="text-align: center;">  
+			<button type="button" onclick="submitForm()">提交</button>
+			<p id="score" style="color: white; font-size: 20px;">分数: 0/8</p>
+			<div id="scoreImage" style="text-align: center;">
+			    <img src="res/11111.png" alt="Score Image" style="display: inline-block; width: 200px; height: 200px; margin: 0 auto;" />
+			</div>
+			
+		
+		   <script>
+		        const correctAnswers = ['B', 'A', 'C', 'C', 'D', 'C', 'A', 'A'];
+		        const scoreImages = [
+		            'res/score0.png',  // 0分图片
+		            'res/score1-4.png', // 1-4分图片
+		            'res/score5-7.png', // 5-7分图片
+		            'res/score8.png'   // 8分图片
+		        ];
+		 
+		        function submitForm() {
+		            let score = 0;
+		            for (let i = 1; i <= 8; i++) {
+		                const userAnswer = document.querySelector(`input[name="answer${i}"]:checked`);
+		                if (userAnswer) {
+		                    const userAnswerValue = userAnswer.value;
+		                    if (userAnswerValue === correctAnswers[i - 1]) {
+		                        score++;
+		                    }
+		                } else {
+		                    console.log(`问题${i}未回答`);
+		                }
+		            }
+		            document.getElementById('score').textContent = `分数: ${score}/8`;
+		 
+		            // 根据得分选择图片
+		            let imageIndex;
+		            if (score === 0) {
+		                imageIndex = 0;
+		            } else if (score <= 4) {
+		                imageIndex = 1;
+		            } else if (score <= 7) {
+		                imageIndex = 2;
+		            } else {
+		                imageIndex = 3;
+		            }
+		            const scoreImageElement = document.querySelector('#scoreImage img');
+		            scoreImageElement.src = scoreImages[imageIndex];
+		        }
+		    </script>
+		</body>
+		</html>

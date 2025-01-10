@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>答题</title>
+		<style>
+			#main {							
+				width: 100%;
+				height: 1400px;
+				min-width: 500px;
+				z-index: -10;
+				zoom: 1;				
+				background-image: url("res/131313.png");
+				background-repeat: repeat-y;
+                background-size:cover;
+				background-position: 0 0;
+				color: white;
+			}
+			.question {
+			            font-size: 1.3em; 
+			            margin-bottom: 10px;
+			        }
+			.image1{
+			        text-align:center;
+			        width: 190px; 
+					height: 190px;
+			        }
+		    #scoreImage img {
+		        transition: transform 0.3s ease; 
+		    }
+		     
+		    #scoreImage img:hover {
+		        transform: scale(1.2); 
+		    }
+		</style>
+		<link rel="stylesheet" href="css/main.css" type="text/css">
+
+	</head>
+
+	<body>
+		
+		<form action="http://127.0.0.1:8848/ex2/index.html" method="get" ></form>
+		<div id="main">
+			<h1>答题</h1>
+    		<div class="menu">
+    			<a href="index.html">返回首页</a>
+    		</div>
+			<h2 class="question">1.以下哪个不是描述敦煌在丝绸之路上的重要性的词语？：</h2><br />
+			<input type="radio" name="answer1" value="A"/>A. 要道
+			<input type="radio" name="answer1" value="B"/>B. 中枢
+			<input type="radio" name="answer1" value="C"/>C. 要塞<br /><br />
+			<h2 class="question">2.丝绸之路上，敦煌壁画反映了哪些内容？：</h2><br />
+			<input type="radio" name="answer2" value="A"/>A. 商业贸易
+			<input type="radio" name="answer2" value="B"/>B. 战争场景
+			<input type="radio" name="answer2" value="C"/>C. 中西文化交流与融合<br /><br />
+			<h2 class="question">3.以下哪位历史人物与丝绸之路的开辟有直接关系，并且其事迹在敦煌壁画中有体现？：</h2><br />
+			<input type="radio" name="answer3" value="A"/>A. 张骞
+			<input type="radio" name="answer3" value="B"/>B. 玄奘
+			<input type="radio" name="answer3" value="C"/>C. 鉴真<br /><br />
+			<h2 class="question">4.敦煌壁画中常见的胡人商队形象，主要反映了丝绸之路上的什么活动？：</h2><br />
+			<input type="radio" name="answer4" value="A"/>A. 农业交流
+			<input type="radio" name="answer4" value="B"/>B. 军事活动
+			<input type="radio" name="answer4" value="C"/>C. 商业贸易<br /><br />
+			<h2 class="question">5.以下哪个不是敦煌壁画中可能描绘的场景？：</h2><br />
+			<input type="radio" name="answer5" value="A"/>A. 胡人牵着骆驼行进
+			<input type="radio" name="answer5" value="B"/>B. 佛教寺庙的仪式
+			<input type="radio" name="answer5" value="C"/>C. 欧洲宫廷生活<br /><br />
+			<h2 class="question">6.丝绸之路的发展对敦煌产生了哪些影响？：</h2><br />
+			<input type="radio" name="answer6" value="A"/>A. 促进了当地经济的繁荣
+			<input type="radio" name="answer6" value="B"/>B. 推动了文化的交流与融合
+			<input type="radio" name="answer6" value="C"/>C. 导致了环境的严重恶化<br /><br />
+			<h2 class="question">7.以下哪个不是描述丝绸之路上敦煌壁画艺术特点的选项？：</h2><br />
+			<input type="radio" name="answer7" value="A"/>A. 色彩丰富
+			<input type="radio" name="answer7" value="B"/>B. 线条流畅
+			<input type="radio" name="answer7" value="C"/>C. 风格现代<br /><br />
+			<h2 class="question">8.丝绸之路的发展对敦煌以及沿线地区的经济产生了深远影响，以下哪项不是其积极影响？：</h2><br />
+			<input type="radio" name="answer8" value="A"/>A. 带动了相关产业的发展
+			<input type="radio" name="answer8" value="B"/>B. 促进了城市化进程
+			<input type="radio" name="answer8" value="C"/>C. 造成了严重的环境污染<br /><br />
+			<div style="text-align: center;">  
+			<button type="button" onclick="submitForm()">提交</button>
+			<p id="score" style="color: white; font-size: 20px;">分数: 0/8</p>
+			<div id="scoreImage" style="text-align: center;">
+			    <img src="res/11111.png" alt="Score Image" style="display: inline-block; width: 200px; height: 200px; margin: 0 auto;" />
+			</div>
+			
+		
+		   <script>
+		        const correctAnswers = ['C', 'C', 'A', 'C', 'C', 'B', 'C', 'C'];
+		        const scoreImages = [
+		            'res/score0.png',  // 0分图片
+		            'res/score1-4.png', // 1-4分图片
+		            'res/score5-7.png', // 5-7分图片
+		            'res/score8.png'   // 8分图片
+		        ];
+		 
+		        function submitForm() {
+		            let score = 0;
+		            for (let i = 1; i <= 8; i++) {
+		                const userAnswer = document.querySelector(`input[name="answer${i}"]:checked`);
+		                if (userAnswer) {
+		                    const userAnswerValue = userAnswer.value;
+		                    if (userAnswerValue === correctAnswers[i - 1]) {
+		                        score++;
+		                    }
+		                } else {
+		                    console.log(`问题${i}未回答`);
+		                }
+		            }
+		            document.getElementById('score').textContent = `分数: ${score}/8`;
+		 
+		            // 根据得分选择图片
+		            let imageIndex;
+		            if (score === 0) {
+		                imageIndex = 0;
+		            } else if (score <= 4) {
+		                imageIndex = 1;
+		            } else if (score <= 7) {
+		                imageIndex = 2;
+		            } else {
+		                imageIndex = 3;
+		            }
+		            const scoreImageElement = document.querySelector('#scoreImage img');
+		            scoreImageElement.src = scoreImages[imageIndex];
+		        }
+		    </script>
+		</body>
+		</html>
